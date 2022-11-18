@@ -6,25 +6,31 @@ export default function RouterWrapper({
     component: Component,
     isPrivate,
     ...rest
-}) {
+}) 
+{
     const { signed } = useContext(AuthContext);
 
     const loading = false;
+
+    
     
     
     if(loading){
         return(
-            <div></div>
+            <div>
+                
+            </div>
         );
     }
 
-    if(!signed && isPrivate){
+    if(!signed && !isPrivate){
+        
         return <Redirect to="/"/>;
         
     }
 
     if(signed && !isPrivate){
-        return <Redirect to="/dashboard"/>;
+        return <Redirect to="/"/>;
     }
 
     return(
@@ -33,5 +39,5 @@ export default function RouterWrapper({
             <Component {...props}/>} 
     
         />
-    )
+    );
 }
