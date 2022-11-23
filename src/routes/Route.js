@@ -8,9 +8,9 @@ export default function RouterWrapper({
     ...rest
 }) 
 {
-    const { signed } = useContext(AuthContext);
+    const { signed, loading } = useContext(AuthContext);
 
-    const loading = false;
+    
 
     
     
@@ -23,14 +23,14 @@ export default function RouterWrapper({
         );
     }
 
-    if(!signed && !isPrivate){
+    if(!signed && isPrivate){
         
         return <Redirect to="/"/>;
         
     }
 
     if(signed && !isPrivate){
-        return <Redirect to="/"/>;
+        return <Redirect to="/dashboard"/>;
     }
 
     return(
