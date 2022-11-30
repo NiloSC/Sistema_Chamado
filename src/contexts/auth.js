@@ -1,5 +1,6 @@
 import { useState, createContext, useEffect } from "react";
 import firebase from  "../services/fireBaseConnections";
+import { toast, Toast } from 'react-toastify';
 
 //criar o context 
 export const AuthContext = createContext ({});
@@ -32,9 +33,25 @@ function AuthProvider({children}){
         await firebase.auth().signInWithEmailAndPassword(email, password)
         .then(async (value) => {
             let uid = value.user.uid;
+            const userProfile = await firebase.firestore().collection('users').doc(uid).get();
+
+            let data = {
+                uid: uid,
+                nome: userProfile.data().nome,
+                avatarUrl: userProfile.data().avatarUrl,
+                email: value.user.email,
+            };
+
+            setUser(data);
+            storageUser(data);
+            setLoadingAuth(false);
+            toast.success('Logado com sucesso');
+
         })
 
         .catch((error) => {
+            console.log(error);
+            toast.error('Ops verifique seus dados');
             setLoadingAuth(false);
         });
     }
@@ -70,7 +87,9 @@ function AuthProvider({children}){
 
         .catch((error) => {
             console.log(error);
+            toast.error('Ops algo deu errado!');
             setLoadingAuth(false);
+            toast.success('Bem vindo a plataforma!');
         });
     }
 
@@ -87,7 +106,7 @@ function AuthProvider({children}){
 
     
     return(
-        <AuthContext.Provider value= {{ signed: !!user, user, loading, signUp, signOut }}>
+        <AuthContext.Provider value= {{ signed: !!user, user, loading, signUp, signOut, signIn, LoadingAuth}}>
             {children}
         </AuthContext.Provider>
 
