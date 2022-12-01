@@ -1,5 +1,5 @@
 import { useState, createContext, useEffect } from "react";
-import firebase from  "../services/fireBaseConnections";
+import firebase from '../services/fireBaseConnections';
 import { toast, Toast } from 'react-toastify';
 
 //criar o context 
@@ -66,6 +66,7 @@ function AuthProvider({children}){
             let uid = value.user.uid;
 
             //cadastrar banco
+            
             await firebase.firestore().collection('users').doc(uid).set({
                 nome: nome,
                 avatarUrl: null,

@@ -1,6 +1,6 @@
-import firebase from "firebase/app" ;
-import "firebase/auth" ;
-import 'firebase/firestore';
+import firebase  from "firebase/app" ;
+import  'firebase/auth';
+import  'firebase/firestore';
 
 let fireBaseConfig = {
     apiKey: "AIzaSyBftfC6PjKFPhJ2du11ODZlgLl2vB9cyYU",
@@ -17,4 +17,4 @@ let fireBaseConfig = {
  };
 
 
- export default firebase ;
+ export default firebase;
