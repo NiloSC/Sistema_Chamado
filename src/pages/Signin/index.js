@@ -9,14 +9,14 @@ function Signin() {
 
     const [email, setEmail] = useState('');
     const[password, setPassword] = useState('');
-    const { signin, LoadingAuth } = useContext(AuthContext)
+    const { signIn, LoadingAuth } = useContext(AuthContext)
 
 
     function handleSubmit(e){
         e.preventDefault();
 
         if (email !== '' && password !== ''){
-            signin(email, password);
+            signIn(email, password);
         }
         
 
