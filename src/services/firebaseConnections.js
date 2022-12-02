@@ -1,4 +1,4 @@
-import firebase  from "firebase/app" ;
+import firebase from "firebase/app";
 import  'firebase/auth';
 import  'firebase/firestore';
 
@@ -9,7 +9,7 @@ let fireBaseConfig = {
     storageBucket: "chamado-31af6.appspot.com",
     messagingSenderId: "830233952660",
     appId: "1:830233952660:web:7fc6d91017db9191334f81",
-    measurementId: "G-3ZYG3BRJGJ",
+    measurementId: "G-3ZYG3BRJGJ"
   };
   
  if(!firebase.apps.length){

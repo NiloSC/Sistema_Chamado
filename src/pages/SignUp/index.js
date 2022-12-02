@@ -13,7 +13,9 @@ function SignUp() {
     
     function handleSubmit(e) {
         e.preventDefault();
-            if (nome !== '' && email !== '' && password !== ''){signUp(nome, email, password)};
+            if (nome !== '' && email !== '' && password !== ''){
+                signUp(nome, email, password);
+            }
             
     }
 

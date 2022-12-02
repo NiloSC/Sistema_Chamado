@@ -16,7 +16,7 @@ function Signin() {
         e.preventDefault();
 
         if (email !== '' && password !== ''){
-            signin(email, password)
+            signin(email, password);
         }
         
 

@@ -1,8 +1,9 @@
 import { useState, createContext, useEffect } from "react";
-import firebase from '../services/fireBaseConnections';
+import  firebase from '../services/firebaseConnections';
 import { toast, Toast } from 'react-toastify';
 
-//criar o context 
+
+// criar o context 
 export const AuthContext = createContext ({});
 
 
@@ -18,10 +19,10 @@ function AuthProvider({children}){
             if(storageUser){
                 setUser(JSON.parse(storageUser));
                 setLoading(false);
-            };
+            }
 
             setLoading(false);
-        };
+        }
 
         loadStorage();
     }, []);
@@ -48,6 +49,8 @@ function AuthProvider({children}){
             toast.success('Logado com sucesso');
 
         })
+    
+    
 
         .catch((error) => {
             console.log(error);
@@ -82,6 +85,7 @@ function AuthProvider({children}){
                 setUser(data);
                 storageUser(data);
                 setLoadingAuth(false);
+                toast.success('Bem Vindo a plataforma');
             });
 
         })
@@ -90,7 +94,6 @@ function AuthProvider({children}){
             console.log(error);
             toast.error('Ops algo deu errado!');
             setLoadingAuth(false);
-            toast.success('Bem vindo a plataforma!');
         });
     }
 
