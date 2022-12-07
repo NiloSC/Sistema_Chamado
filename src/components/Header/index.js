@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import {FiHome, FiUser, FiSettings } from 'react-icons/fi';
 
 
-export default function Header(){
+export default function Header() {
    const { user } = useContext(AuthContext);   
     return (
        <div className= "sidebar">
@@ -21,12 +21,12 @@ export default function Header(){
                 Chamados
                 </Link>
 
-                <Link to="/dashboard">
+                <Link to="/customer">
                 <FiUser color="#FFF" size={24}/>
                 Cliente
                 </Link>
 
-                <Link to="/dashboard">
+                <Link to="/profile">
                 <FiSettings color="#FFF" size={24}/>
                 Configurações
                 </Link>
